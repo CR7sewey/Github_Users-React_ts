@@ -18,11 +18,11 @@ export default tseslint.config({
   languageOptions: {
     // other options...
     parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
+});
 ```
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
@@ -31,11 +31,11 @@ export default tseslint.config({
 
 ```js
 // eslint.config.js
-import react from 'eslint-plugin-react'
+import react from "eslint-plugin-react";
 
 export default tseslint.config({
   // Set the react version
-  settings: { react: { version: '18.3' } },
+  settings: { react: { version: "18.3" } },
   plugins: {
     // Add the react plugin
     react,
@@ -44,7 +44,41 @@ export default tseslint.config({
     // other rules...
     // Enable its recommended rules
     ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
+    ...react.configs["jsx-runtime"].rules,
   },
-})
+});
 ```
+
+## Project Setup
+
+```sh
+npm create vite@latest github_project -- --template react-ts
+```
+
+## Remove Boilerplate
+
+## React Icons
+
+[React Icons - Main Docs](https://react-icons.github.io/react-icons/)
+
+```sh
+npm install react-icons --save
+```
+
+## React Router Dom
+
+- [react-router-dom - Main Docs](https://reactrouter.com/web/guides/quick-start)
+
+```sh
+npm i react-router-dom
+```
+
+## Gihthub API
+
+- [Root Endpoint](https://api.github.com)
+- [Get User](https://api.github.com/users/wesbos)
+- [Repos](https://api.github.com/users/CR7sewey/repos?per_page=100)
+- [Followers](https://api.github.com/users/CR7sewey/followers)
+- [Rate Limit](https://api.github.com/rate_limit)
+
+For unauthenticated requests, the rate limit allows for up to 60 requests per hour. Unauthenticated requests are associated with the originating IP address, and not the user making requests.
