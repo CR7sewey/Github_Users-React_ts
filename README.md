@@ -82,3 +82,55 @@ npm i react-router-dom
 - [Rate Limit](https://api.github.com/rate_limit)
 
 For unauthenticated requests, the rate limit allows for up to 60 requests per hour. Unauthenticated requests are associated with the originating IP address, and not the user making requests.
+
+## Tailwind
+
+[Tailwind Docs](https://tailwindcss.com/docs/guides/vite)
+
+- add tailwind
+
+```sh
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+- rename to tailwind.config.cjs
+- add following content
+
+tailwind.config.cjs
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+- [DaisyUI](https://daisyui.com/)
+
+- add and configure daisyui to our project
+- add TailwindCSS Typography plugin
+
+```sh
+npm i  -D daisyui@latest @tailwindcss/typography
+```
+
+tailwind.config.js
+
+```js
+{
+ plugins: [require('@tailwindcss/typography'), require('daisyui')],
+}
+```
+
+## Pages
+
+- Login
+- LandingPage
+- HomeLayout
+
+## React Router Dom
