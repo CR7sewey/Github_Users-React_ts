@@ -134,3 +134,51 @@ tailwind.config.js
 - HomeLayout
 
 ## React Router Dom
+
+## 1- Error: Completed
+
+```js
+export const Error = () => {
+  const error = useRouteError();
+  if (error?.status === 404) {
+    return (
+      <div className="error">
+        <div>
+          <h1 className="animate-pulse">404</h1>
+          <h3>Page not found</h3>
+          <div className="mt-10">
+            <Link to="/" className="btn btn-secondary ">
+              <IoIosArrowDropleft />
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <main className="grid min-h-[100vh] place-items-center px-8 ">
+      <h4 className="text-center font-bold text-4xl">There was an error... </h4>
+    </main>
+  );
+};
+```
+
+## 2 - Login: Partial
+
+```js
+import loginImg from "../assets/login-img.svg";
+
+export const Login = () => {
+  return (
+    <div className="min-h-screen grid place-items-center bg-slate-200">
+      <section className="w-screen max-w-screen-sm text-center ">
+        <img src={loginImg} alt="login" className="mb-8" />
+        <h1>
+          <button className="btn">Login</button>
+        </h1>
+      </section>
+    </div>
+  );
+};
+```
