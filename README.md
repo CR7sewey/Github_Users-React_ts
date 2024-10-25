@@ -132,6 +132,13 @@ tailwind.config.js
 - Login
 - LandingPage
 - HomeLayout
+- Error
+- Dashboard
+
+## Components
+
+- NavSearch
+- UserInformations
 
 ## React Router Dom
 
@@ -180,5 +187,40 @@ export const Login = () => {
       </section>
     </div>
   );
+};
+```
+
+## 3 - NavSearch: Partial
+
+```js
+import React, { useState } from "react";
+import { MdSearch } from "react-icons/md";
+
+export const NavSearch = () => {
+const [searchUser, setSearchUser] = useState("");
+
+return (
+<div className="navsearch">
+<form method="GET" className="bg-slate-100">
+        <MdSearch />
+
+        <input
+          type="search"
+          name="search"
+          value={searchUser}
+          className="outline-gray-400 text-gray-600 placeholder:text-gray-800"
+          onChange={(e) => setSearchUser(e.target.value as string)}
+          placeholder={`Enter a Github User...`}
+        />
+        <button
+          type="submit"
+          className="bg-cyan-600 text-white hover:bg-cyan-700 hover:text-zinc-200 transition"
+        >
+          search
+        </button>
+      </form>
+      <h3 className="text-gray ">Requests: 60 / 60</h3>
+    </div>
+);
 };
 ```
