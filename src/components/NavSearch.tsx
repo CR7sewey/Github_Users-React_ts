@@ -13,18 +13,12 @@ export const NavSearch = () => {
           type="search"
           name="search"
           value={searchUser}
-          className="outline-gray-400 text-gray-600 placeholder:text-gray-800"
           onChange={(e) => setSearchUser(e.target.value as string)}
           placeholder={`Enter a Github User...`}
         />
-        <button
-          type="submit"
-          className="bg-cyan-600 text-white hover:bg-cyan-700 hover:text-zinc-200 transition"
-        >
-          search
-        </button>
+        <button type="submit">search</button>
       </form>
-      <h3 className="text-gray ">Requests: 60 / 60</h3>
+      <h3>Requests: 60 / 60</h3>
     </div>
   );
   {

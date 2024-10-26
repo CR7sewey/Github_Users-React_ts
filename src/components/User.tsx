@@ -1,7 +1,6 @@
 import { useState } from "react";
 import mockUser from "../utils/mockData/userData";
 import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
-import { Followers } from "./Followers";
 
 export const User = () => {
   const [user, setUser] = useState(mockUser);
@@ -20,7 +19,7 @@ export const User = () => {
         </div>
         <a href={user.html_url}>Follow</a>
       </header>
-      <p className="bio mb-5">{user.bio}</p>
+      <p className="bio mb-3">{user.bio}</p>
       <div className="links">
         <p>
           <MdBusiness /> {user.company || "No Company"}
