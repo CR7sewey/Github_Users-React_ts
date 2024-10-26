@@ -147,9 +147,9 @@
   }
 
   .info .item {
-    border-radius: var(--radius);
+    border-radius: 0.25rem;
     padding: 1rem 2rem;
-    background: var(--clr-white);
+    background: rgb(241 245 249);
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 3rem;
@@ -193,5 +193,94 @@
   .info .item .yellow {
     background: #fffbea;
     color: #f0b429;
+  }
+
+  .card {
+    background-color: rgb(241 245 249);
+    padding: 1.5rem 2rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    position: relative;
+  }
+
+  .card::before {
+    content: "user";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    background: rgb(241 245 249);
+    color: rgb(171, 174, 175);
+    border-top-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    text-transform: capitalize;
+    padding: 0.5rem 1rem 0 1rem;
+    letter-spacing: 0.1rem;
+    font-size: 1rem;
+  }
+
+  .card header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    column-gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .card header img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+  }
+  .card header h4 {
+    margin-bottom: 0.25rem;
+  }
+  .card header p {
+    margin-bottom: 0;
+  }
+
+  .card header a {
+    color: #76c1d1;
+    border: 1px solid #76c1d1;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s linear;
+    cursor: pointer;
+  }
+
+  .card header a:hover {
+    background: #76c1d1;
+    color: #fff;
+  }
+
+  .card .bio {
+    color: rgb(171, 174, 175);
+  }
+
+  .card .links p,
+  a {
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card .links a svg {
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .card .links a {
+    color: #76c1d1;
+    transition: all 0.3s linear;
+  }
+  .card .links a svg {
+    color: rgb(171, 174, 175);
+  }
+  .card .links a svg:hover {
+    color: #76c1d1;
   }
 }
