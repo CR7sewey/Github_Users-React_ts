@@ -9,15 +9,16 @@ import { Bar3D } from "./Charts/Bar3D";
 export const Repos = () => {
   const languages = getLanguages(reposData);
   const repos = getRepos(reposData);
-
-
+  const languagesStars = languages.map((val) => { return { label: val.label, value: val.stars } })
+  const reposForks = repos.map((val) => { return { label: val.label, value: val.popular } })
+  console.log(reposForks)
   return (
     <section className="section">
       <section className="section-center repos">
         <Plot3D languages={languages} />
         <Columns3D repos={repos} />
-        <Doughnut2d />
-        <Bar3D />
+        <Doughnut2d languages={languagesStars} />
+        <Bar3D repos={reposForks} />
       </section>
     </section>
 

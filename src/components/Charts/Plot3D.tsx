@@ -10,6 +10,7 @@ export const Plot3D = ({ languages }: {
   languages: {
     label: string;
     value: string;
+    stars: string;
   }[]
 }) => {
 

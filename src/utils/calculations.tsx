@@ -1,5 +1,5 @@
 
-export const getLanguages = (reposData): Array<{ label: string, value: string }> => {
+export const getLanguages = (reposData): Array<{ label: string, value: string, stars: string }> => {
     let languages: Array<{ label: string, value: string }> = [];
     let inicialState = [...languages];
 
@@ -11,6 +11,7 @@ export const getLanguages = (reposData): Array<{ label: string, value: string }>
                 const newL = acc.map((obj) => {
                     if (obj.label === values.language) {
                         obj.value = (Number(obj.value) + 1).toString()
+                        obj.stars = (Number(obj.stars) + values.stargazers_count).toString()
                     }
                     return obj;
                 })
@@ -21,7 +22,7 @@ export const getLanguages = (reposData): Array<{ label: string, value: string }>
         if (!values.language) {
             return acc;
         }
-        acc.push({ label: values.language || 'null', value: '1' })
+        acc.push({ label: values.language || 'null', value: '1', stars: values.stargazers_count })
         return acc;
 
     }, inicialState)
@@ -52,12 +53,10 @@ export const getLanguages = (reposData): Array<{ label: string, value: string }>
     return languages;
 }
 
-export const getRepos = (reposData): Array<{ label: string, value: string }> => {
-    let languages: Array<{ label: string, value: string }> = [];
-    let inicialState = [...languages];
+export const getRepos = (reposData): Array<{ label: string, value: string, popular:string }> => {
     // stargazers_count
     const repos = reposData.map((val) => {
-        return { label: val.name, value: val.stargazers_count.toString() }
+        return { label: val.name, value: val.stargazers_count.toString(), popular: val.forks_count.toString() }
     })
 
     repos.sort((a, b) => { return b.value - a.value })

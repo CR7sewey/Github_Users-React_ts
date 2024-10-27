@@ -6,10 +6,7 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 ReactFC.fcRoot(FusionCharts, Column3D, FusionTheme);
 
 export const Columns3D = ({ repos }: {
-  repos: {
-    label: string;
-    value: string;
-  }[]
+  repos: { label: string, value: string, popular: string }[]
 }) => {
   const chartConfigs = {
     type: 'column3d',
