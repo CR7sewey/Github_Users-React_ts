@@ -302,3 +302,10 @@ export const User = () => {
   );
 };
 ```
+
+## Fusion Charts
+
+- [Fusion Charts - Main Docs](https://www.fusioncharts.com/)
+- [First React Chart](https://www.fusioncharts.com/dev/getting-started/react/your-first-chart-using-react)
+- [List Of Charts](https://www.fusioncharts.com/dev/chart-guide/list-of-charts)
+- [Themes](https://www.fusioncharts.com/dev/themes/introduction-to-themes)

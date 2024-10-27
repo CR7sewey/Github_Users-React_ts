@@ -379,4 +379,32 @@
   .followers a {
     color: rgb(171, 174, 175);
   }
+
+  .repos {
+    display: grid;
+    justify-items: center;
+    gap: 2rem;
+  }
+  @media (min-width: 800px) {
+    .repos {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .repos {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
+
+  .repos div {
+    width: 100% !important;
+  }
+  .repos .fusioncharts-container {
+    width: 100% !important;
+  }
+  .repos svg {
+    width: 100% !important;
+    border-radius: 1rem !important;
+  }
 }

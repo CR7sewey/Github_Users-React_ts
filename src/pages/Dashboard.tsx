@@ -3,6 +3,7 @@ import { NavSearch } from "../components/NavSearch";
 import { UserInformations } from "../components/UserInformations";
 import { User } from "../components/User";
 import { Followers } from "../components/Followers";
+import { Repos } from "../components/Repos";
 
 export const Dashboard = () => {
   return (
@@ -16,6 +17,7 @@ export const Dashboard = () => {
             <Followers />
           </section>
         </section>
+        <Repos />
       </div>
     </main>
   );
