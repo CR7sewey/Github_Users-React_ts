@@ -22,21 +22,26 @@ export const Repos = () => {
       try {
         setIsLoading(true)
         console.log(`https://api.github.com/users/${user.login}/repos?per_page=100`)
-        const data = reposData;
-        //const data = await axios(`https://api.github.com/users/${user.login}/repos?per_page=100`) - API rate error
+        //const data = reposData;
+        const data = await axios(`https://api.github.com/users/${user.login}/repos?per_page=100`)// - API rate error
         setIsLoading(false)
         setRepos(data);
         return data
       }
       catch (e) {
         console.log(e)
+        return e
       }
     }
     fetchRepos()
   }, [])
 
   if (isLoading) {
-    return <img src={preloader} alt='loader' />
+    return <section className="section">
+      <section className="section-center pt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
+        <img src={preloader} alt='loader' className="mt-10 items-center content-center" />
+        <img src={preloader} alt='loader' className="mt-10 items-center content-center" />
+      </section></section>
   }
 
   const languages = getLanguages(repos);

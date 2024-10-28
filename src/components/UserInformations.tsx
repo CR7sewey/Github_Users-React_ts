@@ -1,12 +1,16 @@
+import { useGlobalContext } from "../context";
 import { items } from "../utils/infos";
 import { Info } from "../utils/types";
 
 export const UserInformations = () => {
+  const { user, repos } = useGlobalContext()
+  const values = { repos: user.public_repos, followers: user.followers, following: user.following, gifts: user.public_gists }
   return (
     <section className="section ">
       <div className="section-center info">
         {items.map((val) => {
-          return <Item key={val.id} {...val} />;
+          const newVal = { ...val, value: values[val.label] }
+          return <Item key={val.id} {...newVal} />;
         })}
       </div>
     </section>
