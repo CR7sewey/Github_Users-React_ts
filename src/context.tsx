@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
-import { User } from "./utils/types";
+import { Repos, User } from "./utils/types";
 import userData from "./utils/mockData/userData";
+import reposData from "./utils/mockData/reposData";
 
 
 const GlobalContext = createContext<User | undefined>(undefined);
@@ -21,8 +22,9 @@ export const useGlobalContext = () => {
 
 function AppProvider({ children }: ThemeProviderProps) {
   const [user, setUser] = useState<User>(userData);
+  const [repos, setRepos] = useState<Repos[]>(reposData);
   return (
-    <GlobalContext.Provider value={{ user, setUser }}>
+    <GlobalContext.Provider value={{ user, setUser, repos, setRepos }}>
       {children}
     </GlobalContext.Provider>
   );

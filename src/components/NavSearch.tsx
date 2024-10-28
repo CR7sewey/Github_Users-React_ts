@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import { useGlobalContext } from "../context";
 import axios from "axios";
 
 export const NavSearch = () => {
   const [searchUser, setSearchUser] = useState("");
+  const [requests, setRequests] = useState<{ limit: number, remaining: number }>({ limit: 60, remaining: 60 });
   const [showMessage, setShowMessage] = useState(false)
   const [message, setMessage] = useState("");
-  const { setUser } = useGlobalContext()
+  const { user, setUser } = useGlobalContext()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,6 +37,21 @@ export const NavSearch = () => {
     }
   }
 
+  useEffect(() => {
+    const fetchRate = async () => {
+      try {
+        const rateLimit = await axios(`https://api.github.com/rate_limit`);
+        console.log(rateLimit, 'estou aqui')
+        setRequests({ limit: rateLimit?.data?.rate.limit, remaining: rateLimit?.data?.rate.remaining })
+      }
+      catch (e) {
+        console.log(e)
+      }
+    }
+    fetchRate()
+    console.log(requests)
+  }, [user])
+
   return (
     <>
       {showMessage && <h1 className="text-red-600 font-thin">{message}</h1>}
@@ -54,7 +70,7 @@ export const NavSearch = () => {
           />
           <button type="submit">search</button>
         </form>
-        <h3>Requests: 60 / 60</h3>
+        <h3>Requests: {requests.remaining} / {requests.limit}</h3>
       </div></>
   );
   {
