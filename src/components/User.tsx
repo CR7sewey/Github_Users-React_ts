@@ -1,9 +1,10 @@
 import { useState } from "react";
 import mockUser from "../utils/mockData/userData";
 import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
+import { useGlobalContext } from "../context";
 
 export const User = () => {
-  const [user, setUser] = useState(mockUser);
+  const { user } = useGlobalContext();
   console.log(user);
   return (
     <article className="card">

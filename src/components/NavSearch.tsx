@@ -1,25 +1,61 @@
 import React, { useState } from "react";
 import { MdSearch } from "react-icons/md";
+import { useGlobalContext } from "../context";
+import axios from "axios";
 
 export const NavSearch = () => {
   const [searchUser, setSearchUser] = useState("");
+  const [showMessage, setShowMessage] = useState(false)
+  const [message, setMessage] = useState("");
+  const { setUser } = useGlobalContext()
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    //console.log(email, text);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
+    if (data?.search === "") {
+      setShowMessage(true);
+      setMessage('Please, insert a User...')
+      return;
+    }
+    try {
+      const res = await axios(`https://api.github.com/users/${data?.search}`)
+      if (res.status === '404') {
+        throw new Error(res?.message);
+      }
+      setUser(res.data)
+      setShowMessage(false);
+      return res
+    }
+    catch (e) {
+      console.log(e)
+      setShowMessage(true);
+      setMessage('Please, insert a valid User...')
+      return e;
+    }
+  }
 
   return (
-    <div className="navsearch">
-      <form method="GET" className="bg-slate-100">
-        <MdSearch />
+    <>
+      {showMessage && <h1 className="text-red-600 font-thin">{message}</h1>}
+      <div className="navsearch">
 
-        <input
-          type="search"
-          name="search"
-          value={searchUser}
-          onChange={(e) => setSearchUser(e.target.value as string)}
-          placeholder={`Enter a Github User...`}
-        />
-        <button type="submit">search</button>
-      </form>
-      <h3>Requests: 60 / 60</h3>
-    </div>
+        <form method="GET" className="bg-slate-100" onSubmit={handleSubmit}>
+          <MdSearch />
+
+
+          <input
+            type="search"
+            name="search"
+            value={searchUser}
+            onChange={(e) => setSearchUser(e.target.value as string)}
+            placeholder={`Enter a Github User...`}
+          />
+          <button type="submit">search</button>
+        </form>
+        <h3>Requests: 60 / 60</h3>
+      </div></>
   );
   {
     /** 

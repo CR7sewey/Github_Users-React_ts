@@ -1,6 +1,6 @@
 
 export const getLanguages = (reposData): Array<{ label: string, value: string, stars: string }> => {
-    let languages: Array<{ label: string, value: string }> = [];
+    let languages: Array<{ label: string, value: string, stars: string }> = [];
     let inicialState = [...languages];
 
     languages = reposData.reduce((acc, values, index) => {
@@ -53,7 +53,7 @@ export const getLanguages = (reposData): Array<{ label: string, value: string, s
     return languages;
 }
 
-export const getRepos = (reposData): Array<{ label: string, value: string, popular:string }> => {
+export const getRepos = (reposData): Array<{ label: string, value: string, popular: string }> => {
     // stargazers_count
     const repos = reposData.map((val) => {
         return { label: val.name, value: val.stargazers_count.toString(), popular: val.forks_count.toString() }
