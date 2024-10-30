@@ -22,8 +22,8 @@ export const Repos = () => {
       try {
         setIsLoading(true)
         console.log(`https://api.github.com/users/${user.login}/repos?per_page=100`)
-        //const data = reposData;
-        const data = await axios(`https://api.github.com/users/${user.login}/repos?per_page=100`)// - API rate error
+        const data = reposData;
+        //const data = await axios(`https://api.github.com/users/${user.login}/repos?per_page=100`)// - API rate error
         setIsLoading(false)
         setRepos(data);
         return data

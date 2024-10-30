@@ -5,10 +5,9 @@ import axios from "axios";
 
 export const NavSearch = () => {
   const [searchUser, setSearchUser] = useState("");
-  const [requests, setRequests] = useState<{ limit: number, remaining: number }>({ limit: 60, remaining: 60 });
   const [showMessage, setShowMessage] = useState(false)
   const [message, setMessage] = useState("");
-  const { user, setUser } = useGlobalContext()
+  const { user, setUser, requests, setRequests } = useGlobalContext()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +42,10 @@ export const NavSearch = () => {
         const rateLimit = await axios(`https://api.github.com/rate_limit`);
         console.log(rateLimit, 'estou aqui')
         setRequests({ limit: rateLimit?.data?.rate.limit, remaining: rateLimit?.data?.rate.remaining })
+        if (rateLimit?.data?.rate.remaining === 0) {
+          setShowMessage(true);
+          setMessage('Sorry, you have exceeded your hourly rate limit!')
+        }
       }
       catch (e) {
         console.log(e)
@@ -68,7 +71,7 @@ export const NavSearch = () => {
             onChange={(e) => setSearchUser(e.target.value as string)}
             placeholder={`Enter a Github User...`}
           />
-          <button type="submit">search</button>
+          <button type="submit" disabled={requests.remaining === 0} className={requests.remaining === 0 ? `bg-red-600` : "bg-blue-500"}>search</button>
         </form>
         <h3>Requests: {requests.remaining} / {requests.limit}</h3>
       </div></>

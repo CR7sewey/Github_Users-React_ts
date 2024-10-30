@@ -4,7 +4,7 @@ import { Info } from "../utils/types";
 
 export const UserInformations = () => {
   const { user, repos } = useGlobalContext()
-  const values = { repos: user.public_repos, followers: user.followers, following: user.following, gifts: user.public_gists }
+  const values: { repos: number, followers: number, following: number, gifts: number } = { repos: user.public_repos, followers: user.followers, following: user.following, gifts: user.public_gists }
   return (
     <section className="section ">
       <div className="section-center info">
