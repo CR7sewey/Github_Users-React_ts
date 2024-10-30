@@ -1,8 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Login } from "./pages/Login";
+import Login from "./pages/Login";
 import { LandingPage } from "./pages/LandingPage";
 import HomeLayout from "./pages/HomeLayout";
 import { Error } from "./pages/Error";
+import LogoutButton from "./pages/Logout";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,10 +21,14 @@ function App() {
     {
       path: "/login",
       element: <Login />,
+      errorElement: <Error />,
+
     },
     {
-      path: "/register",
-      element: <>Register</>,
+      path: "/logout",
+      element: <LogoutButton />,
+      errorElement: <Error />,
+
     },
   ]);
   return <RouterProvider router={router} />;

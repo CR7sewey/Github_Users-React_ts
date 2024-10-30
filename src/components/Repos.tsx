@@ -6,16 +6,14 @@ import { Columns3D } from "./Charts/Columns3D";
 import { Doughnut2d } from "./Charts/Doughnut2d";
 import { Bar3D } from "./Charts/Bar3D";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import preloader from '../assets/preloader.gif'
 import { useGlobalContext } from "../context";
-import { Repos as ReposType, User } from "../utils/types";
 
 export const Repos = () => {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const { user, repos, setRepos }: { user: User, repos: ReposType[], setRepos: React.Dispatch<React.SetStateAction<ReposType[]>> } = useGlobalContext()
+  const { user, repos, setRepos } = useGlobalContext()
 
   useEffect(() => {
     const fetchRepos = async () => {

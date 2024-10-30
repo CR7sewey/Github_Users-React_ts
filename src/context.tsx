@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { Repos, User } from "./utils/types";
 import userData from "./utils/mockData/userData";
 import reposData from "./utils/mockData/reposData";
+import { useAuth0 } from "@auth0/auth0-react";
 
 type ContextType = { user: User, setUser: (value: User) => void, repos: Repos[], setRepos: (value: Repos[]) => void, requests: { limit: number, remaining: number }, setRequests: (value: { limit: number, remaining: number }) => void }
 
