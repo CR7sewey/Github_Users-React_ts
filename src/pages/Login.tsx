@@ -9,7 +9,7 @@ const Login = () => {
       <section className="w-screen max-w-screen-sm text-center ">
         <img src={loginImg} alt="login" className="mb-8" />
         <h1>
-          <button onClick={() => loginWithRedirect()} className="btn">Login</button>
+          <button onClick={() => loginWithRedirect()} className="btn">LOG IN / SIGN UP</button>
         </h1>
       </section>
     </div>

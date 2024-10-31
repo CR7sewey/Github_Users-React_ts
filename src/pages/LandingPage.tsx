@@ -1,11 +1,13 @@
 import React from "react";
 import { Dashboard } from "./Dashboard";
-import { Login } from "./Login";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const LandingPage = () => {
   return (
     <main>
-      <Dashboard />
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
     </main>
   );
 };
